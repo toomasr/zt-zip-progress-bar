@@ -14,6 +14,7 @@ import org.zeroturnaround.zip.ZipUtil;
 public class Main {
   // the number of tmp files that are created for this demo
   private static final int NO_FILES = 100;
+
   // the size of a single file, change the first number to the
   // number of megabytes a file should be, by default 1 MB
   private static final long FILE_SIZE = 1 * 1024 * 1024;
@@ -22,6 +23,8 @@ public class Main {
   // internal variables
   private static final Random random = new Random();
   
+  // internal buffer size we use for generating and writing
+  // out random bytes
   private static final int BUFFER_SIZE = 8192;
   
   private static final File targetDir = new File("target");
@@ -29,8 +32,7 @@ public class Main {
   private static final File zipArchive = new File(targetDir, "tmpDir.zip");
 
   public static void main(String[] args) throws Exception {
-    System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "WARN");
-
+    // will create a NO_FILES of files of size FILE_SIZE each
     produceBunchOfFiles();
 
     if (zipArchive.exists()) {
