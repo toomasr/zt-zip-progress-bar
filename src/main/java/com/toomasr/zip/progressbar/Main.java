@@ -54,6 +54,7 @@ public class Main {
         return name;
       }
     });
+    System.out.print("\rDone                                                 \n");
   }
 
   /**
